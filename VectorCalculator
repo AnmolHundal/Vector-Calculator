@@ -1,0 +1,240 @@
+package calculator;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import java.awt.FlowLayout;
+import javax.swing.JTextField;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
+import java.awt.event.ActionEvent;
+import java.awt.Color;
+
+@SuppressWarnings("unused")
+public class VectorCalculator {
+
+	private JFrame frame;
+	private JTextField textField_1;
+	private JTextField textField_2;
+	private JTextField textField_3;
+	private JTextField textField_4;
+	private JTextField textField_5;
+	private JTextField textField_6;
+	private JTextField textField_7;
+	private JTextField textField_8;
+	private JTextField textField_9;
+	private JTextField txtSage;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					VectorCalculator window = new VectorCalculator();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public VectorCalculator() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize(){
+		frame = new JFrame();
+		frame.getContentPane().setBackground(new Color(255, 140, 13));
+		frame.setBounds(100, 100, 725, 661);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		textField_1 = new JTextField();
+		textField_1.setBackground(Color.CYAN);
+		textField_1.setFont(new Font("Tahoma", Font.PLAIN, 47));
+		textField_1.setBounds(10, 45, 197, 75);
+		frame.getContentPane().add(textField_1);
+		textField_1.setColumns(10);
+		
+		JLabel lblX = new JLabel("    X1");
+		lblX.setFont(new Font("Tahoma", Font.PLAIN, 47));
+		lblX.setBounds(33, 0, 161, 44);  
+		frame.getContentPane().add(lblX);
+		
+		JLabel lblY = new JLabel("X2");
+		lblY.setFont(new Font("Tahoma", Font.PLAIN, 47));
+		lblY.setBounds(583, 0, 108, 44);
+		frame.getContentPane().add(lblY);
+		
+		JLabel lblX_1 = new JLabel("    Y1");
+		lblX_1.setFont(new Font("Tahoma", Font.PLAIN, 47));
+		lblX_1.setBounds(33, 131, 161, 44);
+		frame.getContentPane().add(lblX_1);
+		
+		JLabel lblY_1 = new JLabel("Y2");
+		lblY_1.setFont(new Font("Tahoma", Font.PLAIN, 47));
+		lblY_1.setBounds(583, 131, 91, 44);
+		frame.getContentPane().add(lblY_1);
+		
+		JLabel lblAnswer = new JLabel("Answer");
+		lblAnswer.setFont(new Font("Tahoma", Font.PLAIN, 47));
+		lblAnswer.setBounds(267, 358, 165, 44);
+		frame.getContentPane().add(lblAnswer);
+		
+		JButton btnDotProduct = new JButton("DOT PRODUCT");
+		btnDotProduct.setBackground(new Color(0, 0, 204));
+		btnDotProduct.setForeground(Color.ORANGE);
+		btnDotProduct.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		btnDotProduct.addActionListener(new ActionListener() {	
+			public void actionPerformed(ActionEvent e) {
+				double num1, num2, num3, num4, num5, num6, ans1, ans2, ans3, ans4;
+				num1=Double.parseDouble(textField_1.getText());
+				num2=Double.parseDouble(textField_3.getText());
+				num3=Double.parseDouble(textField_4.getText());
+				num4=Double.parseDouble(textField_5.getText());
+				num5=Double.parseDouble(textField_6.getText());
+				num6=Double.parseDouble(textField_7.getText());
+
+				ans1=num1*num2;			
+				ans2=num3*num4;
+				ans3=num5*num6;
+	  			ans4=ans1+ans2+ans3;
+				DecimalFormat numberFormat = new DecimalFormat("#.00");
+				txtSage.setText(numberFormat.format(ans4));
+
+			}
+		}); 
+		btnDotProduct.setBounds(267, 80, 178, 95);
+		frame.getContentPane().add(btnDotProduct);
+		                           
+		JLabel lblZ = new JLabel("    Z1");
+		lblZ.setFont(new Font("Tahoma", Font.PLAIN, 47));
+		lblZ.setBounds(33, 272, 161, 44);
+		frame.getContentPane().add(lblZ);
+		
+		JLabel lblZ_1 = new JLabel("    Z2");
+		lblZ_1.setFont(new Font("Tahoma", Font.PLAIN, 47));
+		lblZ_1.setBounds(513, 272, 161, 44);
+		frame.getContentPane().add(lblZ_1);
+		
+		JButton btnCrossProduct = new JButton("CROSS PRODUCT");
+		btnCrossProduct.setForeground(Color.ORANGE);
+		btnCrossProduct.setBackground(new Color(0, 0, 204));
+		btnCrossProduct.addActionListener(new ActionListener() {
+		 public void actionPerformed(ActionEvent e) {
+				double num1, num2, num3, num4, num5, num6, ans1, ans2, ans3;
+				num1=Double.parseDouble(textField_1.getText());
+				num2=Double.parseDouble(textField_3.getText());
+				num3=Double.parseDouble(textField_4.getText());
+				num4=Double.parseDouble(textField_5.getText());
+				num5=Double.parseDouble(textField_6.getText());
+				num6=Double.parseDouble(textField_7.getText());
+				
+				ans1=(num3*num6)-(num5*num4);	
+				ans2=(num5*num2)-(num1*num6);
+				ans3=(num1*num4)-(num3*num2);  
+				DecimalFormat numberFormat = new DecimalFormat("#.00");
+				textField_8.setText(numberFormat.format(ans1));
+				textField_9.setText(numberFormat.format(ans2));
+				txtSage.setText(numberFormat.format(ans3));
+			}
+		});
+		btnCrossProduct.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		btnCrossProduct.setBounds(267, 211, 178, 95);
+		frame.getContentPane().add(btnCrossProduct);
+		
+		JLabel lblX_2 = new JLabel("    X");
+		lblX_2.setFont(new Font("Tahoma", Font.PLAIN, 47));
+		lblX_2.setBounds(33, 497, 161, 44);
+		frame.getContentPane().add(lblX_2);
+		
+		JLabel lblY_2 = new JLabel("    Y");
+		lblY_2.setFont(new Font("Tahoma", Font.PLAIN, 47));
+		lblY_2.setBounds(271, 497, 161, 44);
+		frame.getContentPane().add(lblY_2);
+		
+		JLabel lblZ_2 = new JLabel("    Z");
+		lblZ_2.setFont(new Font("Tahoma", Font.PLAIN, 47));
+		lblZ_2.setBounds(530, 497, 161, 44);
+		frame.getContentPane().add(lblZ_2);
+		
+		JLabel lblDotProduct = new JLabel("DOT PRODUCT");
+		lblDotProduct.setFont(new Font("Tahoma", Font.PLAIN, 47));
+		lblDotProduct.setBounds(217, 539, 326, 55);
+		frame.getContentPane().add(lblDotProduct);
+		
+		textField_2 = new JTextField();
+		textField_2.setFont(new Font("Tahoma", Font.PLAIN, 47));
+		textField_2.setColumns(10);
+		textField_2.setBackground(Color.CYAN);
+		textField_2.setBounds(504, 45, 197, 75);
+		frame.getContentPane().add(textField_2);
+		
+		textField_3 = new JTextField();
+		textField_3.setFont(new Font("Tahoma", Font.PLAIN, 47));
+		textField_3.setColumns(10);
+		textField_3.setBackground(Color.CYAN);
+		textField_3.setBounds(27, 186, 197, 75);
+		frame.getContentPane().add(textField_3);
+		
+		textField_4 = new JTextField();
+		textField_4.setFont(new Font("Tahoma", Font.PLAIN, 47));
+		textField_4.setColumns(10);
+		textField_4.setBackground(Color.CYAN);
+		textField_4.setBounds(504, 186, 197, 75);
+		frame.getContentPane().add(textField_4);
+		textField_5 = new JTextField();
+		textField_5.setFont(new Font("Tahoma", Font.PLAIN, 47));
+		textField_5.setColumns(10);
+		textField_5.setBackground(Color.CYAN);
+		textField_5.setBounds(10, 327, 197, 75);
+		frame.getContentPane().add(textField_5);		
+		textField_6 = new JTextField();
+		textField_6.setFont(new Font("Tahoma", Font.PLAIN, 47));
+		textField_6.setColumns(10);
+		textField_6.setBackground(Color.CYAN);
+		textField_6.setBounds(504, 327, 197, 75);
+		frame.getContentPane().add(textField_6);
+		
+		textField_7 = new JTextField();
+		textField_7.setFont(new Font("Tahoma", Font.PLAIN, 47));
+		textField_7.setColumns(10);
+		textField_7.setBackground(Color.CYAN);
+		textField_7.setBounds(10, 424, 197, 75);
+		frame.getContentPane().add(textField_7);
+		
+		textField_8 = new JTextField();
+		textField_8.setFont(new Font("Tahoma", Font.PLAIN, 47));
+		textField_8.setColumns(10);
+		textField_8.setBackground(Color.CYAN);
+		textField_8.setBounds(255, 424, 197, 75);
+		frame.getContentPane().add(textField_8);
+			
+		textField_9 = new JTextField();
+		textField_9.setFont(new Font("Tahoma", Font.PLAIN, 47));
+		textField_9.setColumns(10);
+		textField_9.setBackground(Color.CYAN);
+		textField_9.setBounds(504, 424, 197, 75);
+		frame.getContentPane().add(textField_9);
+		
+		txtSage = new JTextField();
+		txtSage.setText("sage ");
+		txtSage.setFont(new Font("Tahoma", Font.PLAIN, 47));
+		txtSage.setColumns(10);
+		txtSage.setBackground(Color.CYAN);
+		txtSage.setBounds(10, 539, 197, 75);
+		frame.getContentPane().add(txtSage);
+	}
+} 
